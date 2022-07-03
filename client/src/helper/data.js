@@ -1,0 +1,6 @@
+export const chartData = {
+  COMBO_ANALYSIS: 0,
+  MODULE_ANALYSIS: 1,
+  EVENT_ANALYSIS: 2,
+  SESSION_ANALYSIS: 3,
+};

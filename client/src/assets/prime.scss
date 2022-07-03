@@ -1,0 +1,10 @@
+.p-tabview-nav-link {
+  background-color: black;
+}
+.p-tabview
+  .p-tabview-nav
+  li.p-highlight
+  .p-tabview-nav-link[aria-selected="true"] {
+  background: white;
+  border: none;
+}
