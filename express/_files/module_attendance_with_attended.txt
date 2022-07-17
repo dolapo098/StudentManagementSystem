@@ -1,0 +1,23 @@
+SELECT
+sc.id school_id,
+md.id module_id,
+sc.name,
+md.name,
+COUNT (md.id) attended_count
+FROM  public.modules md
+INNER JOIN public.schools sc
+ON md.school_id=sc.id
+INNER JOIN public.events ev
+ON ev.module_id=md.id
+INNER JOIN public.sessions ss
+ON ev.id= ss.event_id
+INNER JOIN public.attendance ad
+ON ad.session_id=ss.id
+WHERE ad.mark='attended'
+AND md.id=?
+GROUP BY
+sc.id,
+md.id,
+md.name,
+sc.name
+ORDER BY md.name

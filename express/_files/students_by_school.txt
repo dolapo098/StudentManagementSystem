@@ -1,0 +1,16 @@
+SELECT
+sc.id school_id,
+sc.name,
+ COUNT (sc.id) student_count
+FROM public.schools sc
+INNER JOIN public.school_users scu
+ON sc.id=scu.school_id
+INNER JOIN public.users us
+ON scu.user_id=us.id
+WHERE us.type='student'
+GROUP BY 
+sc.id,
+sc.name
+ORDER BY 
+
+sc.name

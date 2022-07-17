@@ -1,0 +1,44 @@
+SELECT   
+sc.id school_id,
+md.id module_id,
+sc.name  school_name,
+md.name  module_name,
+ad.mark,
+
+ COUNT(ad.mark) attendance_count,
+    CASE 
+        WHEN ad.mark= 'attended' THEN 'present'
+        WHEN ad.mark='not_attended' THEN 'absent'
+    END 
+   
+FROM    
+    public.attendance ad
+ INNER JOIN public.sessions ss
+ON ad.session_id=ss.id
+INNER JOIN public.events ev
+ON ev.id= ss.event_id
+INNER JOIN public.modules md
+ON md.id= ev.module_id
+INNER JOIN public.schools sc
+ON md.school_id= sc.id
+WHERE 
+    sc.id = ?       
+GROUP BY 
+    sc.id,
+    md.id,
+    ad.mark,
+	md.name,
+	sc.name
+ORDER BY 
+md.name
+
+
+
+
+
+
+
+
+
+
+
